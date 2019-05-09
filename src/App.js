@@ -14,7 +14,7 @@ class App extends Component {
   }
 
     handleClick() {
-        this.getTheTime()
+        this.getTheTime();
     }
 
     componentDidMount() {
@@ -36,7 +36,12 @@ class App extends Component {
                 const timeObj = res.data;
                 this.setState({ timeObj });
             })
-            .catch(error => console.log(error));
+            .catch(error => {
+              console.log(error);
+              const timeObj = {};
+              timeObj.currentTime = 'Cannot retrieve current time';
+              this.setState({ timeObj });
+            });
     }
 }
 
